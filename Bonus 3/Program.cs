@@ -14,27 +14,43 @@ namespace Bonus_3
             Console.WriteLine("Welcome to the Guass a Number Game!");
             Console.WriteLine("+++++++++++++++++++++++++++++++++++\n");
 
-            Console.WriteLine("I'm thinking of aw number between 1 and 100.");
-            Console.WriteLine("Try to guess it, n00b.\n");
+            bool run = true;
 
-            Console.Write("Enter your lousy guess: ");
-            string guessString = Console.ReadLine();
-
-            int guess = isInteger(guessString);
-            if (guess == -1)
+            while (run)
             {
-                return;
-            }
+                Random randomNumber = new Random();
+                int random = randomNumber.Next(1, 100);
+                Console.WriteLine("I'm thinking of aw number between 1 and 100.");
+                Console.WriteLine("Try to guess it, n00b.\n");
 
-            Console.WriteLine(guess);
+                Console.Write("Enter your lousy guess: ");
+                string guessString = Console.ReadLine();
+
+                int guess = isValidInteger(guessString);
+                if (guess == -1)
+                {
+                    return;
+                }
+                if (guess == random)
+                {
+                    Console.WriteLine("You must be seriously amazing slash telepathic!\n!");
+                    Console.Write("Try again? (y/n): ");
+                }
+                Console.WriteLine(guess);
+            }
         }
 
-        static public int isInteger(string guessString)
+        static public int isValidInteger(string guessString)
         {
             int guess;
             if (!int.TryParse(guessString, out guess))
             {
                 Console.WriteLine("Error: Input is not an integer");
+                return -1;
+            }
+            if (guess < 1 || guess > 100)
+            {
+                Console.WriteLine("Error: Input is not between 1 and 100");
                 return -1;
             }
             return guess;
