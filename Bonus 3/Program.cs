@@ -58,12 +58,16 @@ namespace Bonus_3
             int guess;
             if (!int.TryParse(guessString, out guess))
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Error: Input is not an integer.\n");
+                Console.ForegroundColor = ConsoleColor.Gray;
                 return -1;
             }
             if (guess < 1 || guess > 100)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Error: Input is not between 1 and 100.\n");
+                Console.ForegroundColor = ConsoleColor.Gray;
                 return -1;
             }
             return guess;
@@ -73,17 +77,24 @@ namespace Bonus_3
             guessAmount++;
             if (guess == random)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("You got it in {0} tries.", guessAmount);
                 Console.WriteLine("You must be seriously amazing slash telepathic!\n");
+                Console.ForegroundColor = ConsoleColor.Gray;
                 return true;
             }
             else if (guess > random)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Too high! Try again.\n");
+                Console.ForegroundColor = ConsoleColor.Gray;
                 return false;
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Too low, joe. Try again.\n");
+                Console.ForegroundColor = ConsoleColor.Gray;
                 return false;
             }
         }
