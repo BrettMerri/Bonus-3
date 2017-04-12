@@ -37,11 +37,12 @@ namespace Bonus_3
                     {
                         continue;
                     }
-
+                    guessAmount++;
                     if (checkGuess(guess, random, guessAmount))
                     {
                         if (continueApp())
                         {
+                            guessAmount = 0;
                             correctGuess = true;
                         }
                         else
@@ -74,7 +75,6 @@ namespace Bonus_3
         }
         public static bool checkGuess(int guess, int random, int guessAmount)
         {
-            guessAmount++;
             if (guess == random)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
