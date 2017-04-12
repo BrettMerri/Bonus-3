@@ -79,20 +79,52 @@ namespace Bonus_3
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("You got it in {0} tries.", guessAmount);
-                Console.WriteLine("You must be seriously amazing slash telepathic!\n");
+                if (guessAmount == 1)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("You must be seriously amazing slash telepathic!\n");
+                }
+                else if (guessAmount <= 4)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Very good, dog!");
+                }
+                else if (guessAmount <= 6)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Pretty good, I guess. I bet you can do better, though.");
+                }
+                else if (guessAmount <= 8)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Decent at best. Give it another go!");
+                }
+                else if (guessAmount <= 10)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Not good... Try again!");
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("My Granny could do better... Try again!");
+                }
                 Console.ForegroundColor = ConsoleColor.Gray;
+
+                Console.WriteLine();
+
                 return true;
             }
             else if (guess > random)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-
                 if (guess - 10 > random)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("You're crazy high, dog. Try again.\n");
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Too high! Try again.\n");
                 }
 
@@ -101,14 +133,14 @@ namespace Bonus_3
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-
                 if (guess + 10 < random)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("You're crazy low, bro. Try again.\n");
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Too low, joe. Try again.\n");
                 }
                 
@@ -121,7 +153,10 @@ namespace Bonus_3
             while (true)
             {
                 Console.Write("Try again? (y/n): ");
+
                 string continueInput = Console.ReadLine().ToLower();
+
+                Console.WriteLine();
 
                 if (continueInput == "y")
                 {
