@@ -86,14 +86,32 @@ namespace Bonus_3
             else if (guess > random)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Too high! Try again.\n");
+
+                if (guess - 10 > random)
+                {
+                    Console.WriteLine("You're crazy high, dog. Try again.\n");
+                }
+                else
+                {
+                    Console.WriteLine("Too high! Try again.\n");
+                }
+
                 Console.ForegroundColor = ConsoleColor.Gray;
                 return false;
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Too low, joe. Try again.\n");
+
+                if (guess + 10 < random)
+                {
+                    Console.WriteLine("You're crazy low, bro. Try again.\n");
+                }
+                else
+                {
+                    Console.WriteLine("Too low, joe. Try again.\n");
+                }
+                
                 Console.ForegroundColor = ConsoleColor.Gray;
                 return false;
             }
