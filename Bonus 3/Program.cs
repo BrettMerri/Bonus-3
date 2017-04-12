@@ -14,18 +14,22 @@ namespace Bonus_3
             Console.WriteLine("Welcome to the Guass a Number Game!");
             Console.WriteLine("+++++++++++++++++++++++++++++++++++\n");
 
-            bool run = true;
             int guessAmount = 0;
             Random rnd = new Random();
 
             while (true) //infinite loop
             {
                 int random = rnd.Next(1, 100);
+
                 Console.WriteLine("I'm thinking of aw number between 1 and 100.");
                 Console.WriteLine("Try to guess it, n00b.\n");
-                while (run)
+
+                bool correctGuess = false;
+
+                while (!correctGuess)
                 {
                     Console.Write("Enter your lousy guess: ");
+
                     string guessString = Console.ReadLine();
 
                     int guess = isValidInteger(guessString);
@@ -36,7 +40,14 @@ namespace Bonus_3
 
                     if (checkGuess(guess, random, guessAmount))
                     {
-                        Console.Write("Try again? (y/n): ");
+                        if (continueApp())
+                        {
+                            correctGuess = true;
+                        }
+                        else
+                        {
+                            return;
+                        }
                     }
                 }
             }
@@ -47,12 +58,12 @@ namespace Bonus_3
             int guess;
             if (!int.TryParse(guessString, out guess))
             {
-                Console.WriteLine("Error: Input is not an integer\n");
+                Console.WriteLine("Error: Input is not an integer.\n");
                 return -1;
             }
             if (guess < 1 || guess > 100)
             {
-                Console.WriteLine("Error: Input is not between 1 and 100\n");
+                Console.WriteLine("Error: Input is not between 1 and 100.\n");
                 return -1;
             }
             return guess;
@@ -67,13 +78,34 @@ namespace Bonus_3
             }
             else if (guess > random)
             {
-                Console.WriteLine("Too high! Try again.");
+                Console.WriteLine("Too high! Try again.\n");
                 return false;
             }
             else
             {
-                Console.WriteLine("Too low, joe. Try again.");
+                Console.WriteLine("Too low, joe. Try again.\n");
                 return false;
+            }
+        }
+        public static bool continueApp()
+        {
+            while (true)
+            {
+                Console.Write("Try again? (y/n): ");
+                string continueInput = Console.ReadLine().ToLower();
+
+                if (continueInput == "y")
+                {
+                    return true;
+                }
+                else if (continueInput == "n")
+                {
+                    return false;
+                }
+                else
+                {
+                    Console.WriteLine("Error: Input is not y or n.\n");
+                }
             }
         }
     }
