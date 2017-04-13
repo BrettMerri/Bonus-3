@@ -19,7 +19,7 @@ namespace Bonus_3
 
             while (true) //infinite loop
             {
-                int random = rnd.Next(1, 100);
+                int random = rnd.Next(1, 101); //This generates a random number from 1 to 100.
 
                 Console.WriteLine("I'm thinking of aw number between 1 and 100.");
                 Console.WriteLine("Try to guess it, n00b.\n");
